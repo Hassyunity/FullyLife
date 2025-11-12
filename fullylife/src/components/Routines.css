@@ -1,0 +1,142 @@
+:root {
+  --bg: 20% 0.01 70; /* base sombre */
+  --pink: 77.75% 0.1003 350.51;
+  --gold: 84.16% 0.1169 71.19;
+  --mint: 84.12% 0.1334 165.28;
+  --mobile--w: 250px;
+  --mobile--h: 350px;
+  --outline-w: 9px;
+  --preview-bg: #1f1f1f; /* fond sombre pour les cards */
+}
+
+/* Fond général */
+body {
+  background: linear-gradient(
+    50deg,
+    oklch(from oklch(var(--bg)) 15% c h),
+    oklch(from oklch(var(--bg)) 40% c h)
+  );
+  background-attachment: fixed;
+  height: 100%;
+  padding: 3rem 2vw;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  color: #e0e0e0;
+}
+
+/* Container principal */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Titres */
+.title {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+  color: #E53935;
+}
+
+.day-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  border-bottom: 2px solid rgba(255,255,255,0.2);
+  padding-bottom: 0.3rem;
+  text-align: center;
+}
+
+/* Cards container - grid 4 colonnes */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--mobile--w), 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+/* Card style animé */
+.card {
+  --bg-pos-y--start: 0;
+  --bg-pos-y--end: 0;
+  --bg-pos-y: var(--bg-pos-y--start);
+  --shadow-blur: 24px;
+  --shadow-color: rgba(0,0,0,0.7); /* plus sombre */
+  --rotation: -4deg;
+  background-color: var(--preview-bg);
+  background-position-y: var(--bg-pos-y);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 12px;
+  box-shadow: 0 0 var(--shadow-blur) 0 var(--shadow-color);
+  transition: all 0.3s ease;
+  filter: grayscale(100%) sepia(5%);
+  opacity: 0.7;
+  transform: scale(0.85) rotate(var(--rotation));
+  width: var(--mobile--w);
+  min-height: var(--mobile--h);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.card:hover, .card:focus-within {
+  filter: none;
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  box-shadow: 0 0 200px var(--gold);
+  z-index: 5;
+}
+
+.card:focus-within {
+  box-shadow: 0 0 200px var(--pink);
+}
+
+/* Image */
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+/* Titre */
+.card-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #fff; /* texte clair */
+  text-align: center;
+}
+
+/* Animation background scroll */
+@keyframes bg-scroll {
+  to { background-position-y: var(--bg-pos-y--end); }
+}
+
+/* Rotation des cards */
+.card:nth-of-type(2) { --rotation: 3deg; }
+.card:nth-of-type(3) { --rotation: -1deg; }
+.card:nth-of-type(4) { --rotation: -5deg; }
+.card:nth-of-type(5) { --rotation: -2deg; }
+.card:nth-of-type(6) { --rotation: 2deg; }
+.card:nth-of-type(7) { --rotation: 4deg; }
+
+/* Loading */
+.loading {
+  text-align: center;
+  margin-top: 5rem;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+/* Responsive mobile */
+@media screen and (max-width: 768px) {
+  .cards-container {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+}
