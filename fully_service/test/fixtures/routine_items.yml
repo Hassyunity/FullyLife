@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  routine: one
+  title: MyString
+  notes: MyText
+  start_time: 2025-11-11 17:46:40
+  end_time: 2025-11-11 17:46:40
+  position: 1
+  category: MyString
+  duration_minutes: 1
+  mandatory: false
+
+two:
+  routine: two
+  title: MyString
+  notes: MyText
+  start_time: 2025-11-11 17:46:40
+  end_time: 2025-11-11 17:46:40
+  position: 1
+  category: MyString
+  duration_minutes: 1
+  mandatory: false

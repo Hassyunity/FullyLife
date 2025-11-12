@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  heure: MyString
+  description: MyText
+  week: 1
+  day: MyString
+  completed: false
+  remarque: MyString
+
+two:
+  heure: MyString
+  description: MyText
+  week: 1
+  day: MyString
+  completed: false
+  remarque: MyString
