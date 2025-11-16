@@ -63,7 +63,7 @@ const Dashboard: React.FC = () => {
   const completedRoutinesWeek = weekSuivis.filter(s => s.completed).length;
 
   // Groupement par jour pour la semaine sélectionnée
-  const dayOrder = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+  const dayOrder = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
   const data: DayStats[] = dayOrder.map(day => {
     const dayItems = weekSuivis.filter(s => s.day === day);
     const routinesCompleted = dayItems.filter(s => s.completed).length;

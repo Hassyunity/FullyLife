@@ -27,7 +27,16 @@ const Suivis: React.FC = () => {
     try {
       const res = await axios.get<Suivi[]>("http://127.0.0.1:3000/api/v1/suivis");
 
-      const dayOrder = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+      const dayOrder = [
+        "Lundi",
+        "Mardi",
+        "Mercredi",
+        "Jeudi",
+        "Vendredi",
+        "Samedi",
+        "Dimanche"
+      ];
+
       const sorted = res.data.sort((a, b) => {
         if (a.week !== b.week) return a.week - b.week;
         if (a.day !== b.day) return dayOrder.indexOf(a.day) - dayOrder.indexOf(b.day);
@@ -36,7 +45,7 @@ const Suivis: React.FC = () => {
 
       setSuivis(sorted);
       setLoading(false);
-    } catch (err: any) {
+    } catch (err) {
       console.error("Erreur lors du fetch des suivis:", err);
       setError("Impossible de récupérer les suivis");
       setLoading(false);
@@ -48,6 +57,7 @@ const Suivis: React.FC = () => {
       await axios.put(`http://127.0.0.1:3000/api/v1/suivis/${id}`, {
         suivi: { completed: !completed },
       });
+
       setSuivis((prev) =>
         prev.map((s) => (s.id === id ? { ...s, completed: !completed } : s))
       );
@@ -56,10 +66,25 @@ const Suivis: React.FC = () => {
     }
   };
 
+  /** 🔥 Mise à jour du champ Remarque */
+  const updateNote = async (id: number, remarque: string) => {
+    try {
+      await axios.put(`http://127.0.0.1:3000/api/v1/suivis/${id}`, {
+        suivi: { remarque },
+      });
+
+      setSuivis((prev) =>
+        prev.map((s) => (s.id === id ? { ...s, remarque } : s))
+      );
+    } catch (err) {
+      console.error("Erreur lors de la mise à jour de la remarque:", err);
+    }
+  };
+
   if (loading) return <p>Chargement...</p>;
   if (error) return <p>{error}</p>;
 
-  // Grouper par semaine et jour
+  // Groupe par semaine + jour
   const grouped: Record<number, Record<string, Suivi[]>> = {};
   suivis.forEach((s) => {
     if (!grouped[s.week]) grouped[s.week] = {};
@@ -73,7 +98,7 @@ const Suivis: React.FC = () => {
     <div className="suivis-container">
       <h1>Mes Suivis</h1>
 
-      {/* Menu de semaines */}
+      {/* Menu des semaines */}
       <div className="week-selector">
         {weeks.map((week) => (
           <button
@@ -98,20 +123,32 @@ const Suivis: React.FC = () => {
             .map((day) => (
               <div key={day} className="day-column">
                 <h3>{day}</h3>
+
                 {grouped[currentWeek][day].length > 0 ? (
                   <ul className="tasks-list">
                     {grouped[currentWeek][day].map((s) => (
                       <li key={s.id} className={`task ${s.completed ? "completed" : ""}`}>
-                        <label>
+                        <label className="task-line">
                           <input
                             type="checkbox"
                             checked={s.completed}
                             onChange={() => toggleCompleted(s.id, s.completed)}
                           />
+
                           <span className="task-time">
                             {s.start_time} – {s.end_time}
                           </span>
+
                           <span className="task-desc">{s.description}</span>
+
+                          {/* 🔥 Champ notes inline */}
+                          <input
+                            type="text"
+                            className="task-notes"
+                            placeholder="Notes..."
+                            value={s.remarque || ""}
+                            onChange={(e) => updateNote(s.id, e.target.value)}
+                          />
                         </label>
                       </li>
                     ))}

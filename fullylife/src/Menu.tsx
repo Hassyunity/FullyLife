@@ -12,7 +12,7 @@ const Menu: React.FC<MenuProps> = ({ activeMenu, onMenuClick }) => {
     { name: 'Dashboard', icon: 'home' },
     { name: 'Exercices', icon: 'activity' },
     { name: 'Suivies', icon: 'check-circle' },
-    { name: 'Messages', icon: 'message-square' },
+    { name: 'Objectifs', icon: 'target' },
     { name: 'Clients', icon: 'users' }
   ];
 
