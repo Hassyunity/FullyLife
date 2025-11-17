@@ -4,6 +4,7 @@ import Routines from './components/Routines';
 import Dashboard from './components/Dashboard';
 import './App.css';
 import Suivis from './components/Suivies';
+import Objectifs from './components/Objects';
 
 const App: React.FC = () => {
   const [activeMenu, setActiveMenu] = useState<string>('Dashboard');
@@ -16,6 +17,7 @@ const App: React.FC = () => {
         {activeMenu === 'Dashboard' && <Dashboard />}
         {activeMenu === 'Exercices' && <Routines />}
         {activeMenu === 'Suivies' && <Suivis />}
+        {activeMenu === 'Objectifs' && <Objectifs />}
       </main>
     </div>
   );
