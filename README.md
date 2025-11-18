@@ -1,62 +1,116 @@
 # FullyLife
 
-FullyLife est une application web de **gestion quotidienne de routines**, suivie d’objectifs et de progression hebdomadaire. Elle permet de suivre une routines quotidienne, de marquer les tâches comme complétées, et d’analyser les statistiques à travers un tableau de bord interactif.
+FullyLife est une application **web et mobile** de gestion quotidienne
+de routines, suivie d'objectifs et de progression hebdomadaire et **bien plus encore en mis a jour**.\
+Elle permet de suivre des routines journalières, de marquer les tâches
+comme complétées, et d'analyser les statistiques via un tableau de bord
+interactif.
 
----
+------------------------------------------------------------------------
 
-## Table des matières
+## 📌 Table des matières
 
-- [Fonctionnalités](#fonctionnalités)
-- [Stack technique](#stack-technique)
-- [Installation](#installation)
-- [Structure du projet](#structure-du-projet)
-- [Fonctionnalités détaillées](#fonctionnalités-détaillées)
-- [Screenshots](#screenshots)
+-   [Fonctionnalités](#fonctionnalités)
+-   [Screenshots](#screenshots)
+-   [Stack technique](#stack-technique)
+-   [Installation](#installation)
+-   [Structure du projet](#structure-du-projet)
+-   [Fonctionnalités détaillées](#fonctionnalités-détaillées)
+-   [Mobile App](#mobile-app)
+-   [Auteur](#auteur)
 
----
+------------------------------------------------------------------------
 
-## Fonctionnalités
+## 🚀 Fonctionnalités
 
-- Gestion des **routines quotidiennes** avec horaires et descriptions.  
-- Marquer une tâche comme **complétée** (`completed`).  
-- Visualiser les routines par **semaine** et par **jour**.  
-- Dashboard interactif avec :  
-  - Routines totales  
-  - Routines complétées  
-  - Objectifs atteints par jour  
-  - Graphique hebdomadaire des routines complétées  
-- Navigation par semaine avec menu interactif.
-- Design moderne en **dark mode**, type Trello, responsive.  
-- Base de données pré-remplie avec **seed** pour 8 semaines de routines.  
+-   Gestion des **routines quotidiennes** avec horaires et
+    descriptions.\
+-   Marquer une tâche comme **complétée** (`completed`).\
+-   Visualiser les routines par **semaine** et **par jour**.\
+-   Dashboard interactif avec :
+    -   Routines totales\
+    -   Routines complétées\
+    -   Objectifs atteints (jours 100%)\
+    -   Graphique hebdomadaire\
+-   Navigation par semaine\
+-   **Design moderne dark mode**, style Trello\
+-   **Responsive web et mobile**\
+-   Base de données pré-remplie avec **8 semaines de routines**
 
----
+------------------------------------------------------------------------
 
-## Stack technique
+## 🖼️ Screenshots
 
-- **Front-end :** React, TypeScript, Recharts, CSS moderne  
-- **Back-end :** Ruby on Rails API  
-- **Base de données :** PostgreSQL  
-- **Communication front-back :** Axios pour les requêtes HTTP  
-- **Gestion de l’état :** Hooks React (`useState`, `useEffect`)  
+### 🌐 Web --- Dashboard
 
----
+![Dashboard](./screenshots/Capture1.png)
 
-## Installation
+### 🌐 Web --- Exercices
 
-### Prérequis
+![Exercices](./screenshots/Capture2.png)
 
-- Node.js (v18+)  
-- Ruby (v3+) et Rails (v7+)  
-- PostgreSQL (v14+)  
+### 🌐 Web --- Suivies
 
-### Cloner le projet
+![Suivies](./screenshots/Capture3.png)
 
-```bash
-git clone https://github.com/Hassyunity/FullyLife.git
-cd fullylife
+### 🌐 Web --- Objectifs
 
-```
-Installer le back-end (Rails API)
+![Objectifs](./screenshots/Capture4.png)
+
+------------------------------------------------------------------------
+
+### 📱 Mobile --- Dashboard
+
+![Mobile Dashboard](./screenshots/Mobile1.png)
+
+### 📱 Mobile --- Exercices
+
+![Mobile Exercices](./screenshots/Mobile2.png)
+
+### 📱 Mobile --- Suivies
+
+![Mobile Suivies](./screenshots/Mobile3.png)
+
+### 📱 Mobile --- Objectifs
+
+![Mobile Objectifs](./screenshots/Mobile4.png)
+
+------------------------------------------------------------------------
+
+## 🧰 Stack technique
+
+### **Front-end (Web)**
+
+-   React\
+-   TypeScript\
+-   Recharts\
+-   CSS moderne
+
+### **Mobile App**
+
+-   Expo + React Native\
+-   Expo Router\
+-   APK Android générée via Expo Prebuild + Gradle
+
+### **Back-end**
+
+-   Ruby on Rails API\
+-   PostgreSQL\
+-   Axios pour les requêtes HTTP
+
+------------------------------------------------------------------------
+
+## 🛠️ Installation
+
+### 📌 Prérequis
+
+-   Node.js (v18+)\
+-   Ruby (v3+) / Rails (v7+)\
+-   PostgreSQL (v14+)
+
+------------------------------------------------------------------------
+
+## 🔧 Installation du Back-end (Rails API)
 
 ``` bash
 cd fully_service
@@ -65,52 +119,74 @@ rails db:create
 rails db:migrate
 rails db:seed
 rails s
-
 ```
-L’API sera accessible sur : http://127.0.0.1:3000/api/v1/suivis
 
-Installer le front-end (React)
+➡ L'API tourne sur :\
+**http://127.0.0.1:3000/api/v1/suivis**
+
+------------------------------------------------------------------------
+
+## 💻 Installation du Front-end (React)
 
 ``` bash
 cd fullylife
 npm install
 npm start
 ```
-L’application React sera accessible sur : http://localhost:3001 (ou port par défaut 3000 si Rails sur autre port).
 
-Fonctionnalités détaillées
-Suivis / Routines
+➡ Le front tourne sur :\
+**http://localhost:3001**
 
-Affichage de toutes les routines par semaine et jour.
+------------------------------------------------------------------------
 
-Marquer une routine comme completed via checkbox.
+## 📊 Fonctionnalités détaillées
 
-Les jours entièrement complétés sont comptabilisés dans les Objectifs atteints.
+### **Suivis / Routines**
 
-Support pour 8 semaines de suivi.
+-   Affichage des routines par semaine et jour\
+-   Checkbox pour marquer completed\
+-   Jour complètement rempli = objectif atteint\
+-   Support natif pour 8 semaines
 
-Dashboard
+### **Dashboard**
 
-Cartes résumé :
+-   Routines totales\
+-   Routines complétées\
+-   Objectifs atteints (jours)\
+-   Graphique par jour (bar chart)\
+-   Navigation interactive des semaines
 
-Routines totales : nombre total de tâches dans la semaine sélectionnée
+### **UI / UX**
 
-Routines terminées : tâches complétées sur le total
+-   Style Trello (colonnes verticales)\
+-   Dark mode complet\
+-   Responsive tablette / mobile\
+-   Animations : hover, légère rotation, zoom sur les cartes
 
-Objectifs atteints (Jours) : nombre de jours entièrement complétés
+------------------------------------------------------------------------
 
-Graphique barre hebdomadaire : routines complétées par jour.
+## 📱 Mobile App
 
-Menu interactif pour sélectionner la semaine à afficher.
+### 📦 Installation du projet mobile
 
-UI / UX
+``` bash
+cd fullylifemobile
+npm install
+npx expo prebuild
+```
 
-Design moderne type Trello avec colonnes verticales par jour.
+### 📲 Génération APK (release)
 
-Mode sombre complet (dark mode) pour confort visuel.
+``` bash
+cd android
+./gradlew assembleRelease
+```
 
-Responsive pour mobile et tablette.
+APK générée →\
+`android/app/build/outputs/apk/release/app-release.apk`
 
-Animations sur cartes : hover, rotation légère et zoom.
+------------------------------------------------------------------------
 
-## C'etait Hassy, fullstack Développeur.
+## 👤 Auteur
+
+Développé par **Hassy Tsihoarana**, Fullstack Developer.
