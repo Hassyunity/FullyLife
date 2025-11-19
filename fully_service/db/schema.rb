@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_16_093515) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_19_084014) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "cashes", force: :cascade do |t|
+    t.string "nom", default: "Cash Maison", null: false
+    t.string "devise", default: "MGA", null: false
+    t.decimal "solde", precision: 18, scale: 2, default: "0.0", null: false
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "objectifs", force: :cascade do |t|
     t.string "title"
@@ -64,5 +73,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_16_093515) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.bigint "cash_id", null: false
+    t.decimal "montant", precision: 18, scale: 2, null: false
+    t.string "type_transaction", null: false
+    t.string "categorie"
+    t.text "description"
+    t.date "date_transaction", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cash_id"], name: "index_transactions_on_cash_id"
+  end
+
   add_foreign_key "routine_items", "routines"
+  add_foreign_key "transactions", "cashes"
 end

@@ -84,7 +84,7 @@ body {
 /* Hover / actif */
 .navbar__link:hover,
 .navbar__link.active {
-  background: rgba(16, 17, 17, 0.5); /* rouge semi-transparent */
+  background: rgba(16, 17, 17, 0.5);
   /* box-shadow: 0 4px 15px rgba(32, 56, 163, 0.4); */
 }
 

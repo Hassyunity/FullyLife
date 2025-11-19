@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :objectifs
+      resources :cashes
+      resources :transactions
       resources :routines do
         resources :routine_items, only: [:create, :update, :destroy]
       end

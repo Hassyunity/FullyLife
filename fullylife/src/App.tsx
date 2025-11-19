@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import Menu from './Menu';
 import Routines from './components/Routines';
 import Dashboard from './components/Dashboard';
-import './App.css';
 import Suivis from './components/Suivies';
 import Objectifs from './components/Objects';
+import Bank from './components/Bank';
+import './App.css';
 
 const App: React.FC = () => {
   const [activeMenu, setActiveMenu] = useState<string>('Dashboard');
@@ -18,6 +19,7 @@ const App: React.FC = () => {
         {activeMenu === 'Exercices' && <Routines />}
         {activeMenu === 'Suivies' && <Suivis />}
         {activeMenu === 'Objectifs' && <Objectifs />}
+        {activeMenu === 'Bank' && <Bank />} {/* ← nouvel affichage */}
       </main>
     </div>
   );

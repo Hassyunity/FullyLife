@@ -13,7 +13,7 @@ const menus = [
   { key: 'Exercices', icon: 'activity' },
   { key: 'Suivies', icon: 'check-circle' },
   { key: 'Objectifs', icon: 'target' },
-  { key: 'Clients', icon: 'users' },
+  { key: 'Bank', icon: 'credit-card' }
 ];
 
 const Menu: React.FC<MenuProps> = ({ activeMenu, onMenuClick }) => {

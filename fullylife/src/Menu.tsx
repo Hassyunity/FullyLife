@@ -13,7 +13,7 @@ const Menu: React.FC<MenuProps> = ({ activeMenu, onMenuClick }) => {
     { name: 'Exercices', icon: 'activity' },
     { name: 'Suivies', icon: 'check-circle' },
     { name: 'Objectifs', icon: 'target' },
-    { name: 'Clients', icon: 'users' }
+    { name: 'Bank', icon: 'credit-card' }
   ];
 
   useEffect(() => {
@@ -37,7 +37,10 @@ const Menu: React.FC<MenuProps> = ({ activeMenu, onMenuClick }) => {
                   onMenuClick(menu.name);
                 }}
               >
-                <i data-feather={menu.icon}></i>
+                <i
+                  data-feather={menu.icon}
+                  style={{ marginRight: '6px', color: '#c20d0dea', verticalAlign: 'middle' }}
+                ></i>
                 <span>{menu.name}</span>
               </a>
             </li>

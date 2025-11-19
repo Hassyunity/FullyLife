@@ -6,8 +6,8 @@ import Feather from 'react-native-vector-icons/Feather';
 import Dashboard from '@/components/Dashboard';
 import Suivis from '@/components/Suivies';
 import Objectifs from '@/components/Objectifs';
-import Routines from '@/components/Routines';
 import Exercices from '@/components/Exercices';
+import Bank from '@/components/Bank';
 
 const Tab = createBottomTabNavigator();
 
@@ -50,10 +50,10 @@ export default function HomeScreen() {
         }}
       /> 
       <Tab.Screen
-        name="Client"
-        component={Exercices}
+        name="Bank"
+        component={Bank}
         options={{
-          tabBarIcon: ({ color, size }) => <Feather name="users" color={color} size={size} />,
+          tabBarIcon: ({ color, size }) => <Feather name="credit-card" color={color} size={size} />,
         }}
       />
     </Tab.Navigator>
